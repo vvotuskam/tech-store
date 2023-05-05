@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Item</title>
+    <th:block th:include="~{vendor/bootstrap.html}"/>
+</head>
+<body>
+<th:block th:include="~{vendor/navbar.html}"/>
+<div class="container">
+    <h1>Edit User</h1>
+    <form th:action="@{/users/{id}/edit(id=${user.id})}" th:object="${user}" th:method="patch">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+        </div>
+        <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input type="text" class="form-control" id="firstname" th:field="*{firstname}" required>
+        </div>
+        <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" class="form-control" id="lastname" th:field="*{lastname}" required>
+        </div>
+        <div class="form-group">
+            <label for="birthdate">Birth Date:</label>
+            <input type="date" class="form-control" id="birthdate" th:field="*{birthdate}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+</body>
+</html>

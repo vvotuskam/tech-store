@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Item info</title>
+    <th:block th:include="~{vendor/bootstrap.html}"/>
+
+</head>
+<body>
+<th:block th:include="~{vendor/navbar.html}"/>
+<div class="container">
+    <h1>User Info</h1>
+    <!--/*@thymesVar id="user" type="iitu.backend.techstore.models.User"*/-->
+
+    <table class="table">
+        <tr>
+            <th>Email:</th>
+            <td th:text="${user.email}"></td>
+        </tr>
+        <tr>
+            <th>First Name:</th>
+            <td th:text="${user.firstname}"></td>
+        </tr>
+        <tr>
+            <th>Last Name:</th>
+            <td th:text="${user.lastname}"></td>
+        </tr>
+        <tr>
+            <th>Birthdate:</th>
+            <td th:text="${user.birthdate}"></td>
+        </tr>
+        <tr>
+            <th>Role:</th>
+            <td th:text="${user.role}"></td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+    <a th:href="@{/users/{id}/edit(id=${user.id})}" class="btn btn-primary">Edit</a>
+    <form th:action="@{/users/{id}/delete(id=${user.id})}" th:method="delete" class="d-inline">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</div>
+</body>
+</html>

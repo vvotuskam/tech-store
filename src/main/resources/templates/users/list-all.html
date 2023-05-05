@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <th:block th:include="~{vendor/bootstrap.html}"/>
+</head>
+<body>
+<th:block th:include="~{vendor/navbar.html}"/>
+<table class="table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Birthdate</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.firstname}"></td>
+        <td th:text="${user.lastname}"></td>
+        <td th:text="${user.birthdate}"></td>
+        <td>
+            <a th:href="@{/users/{id}(id=${user.id})}" class="btn btn-primary">Details</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

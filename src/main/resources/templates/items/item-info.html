@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Item info</title>
+    <th:block th:include="~{vendor/bootstrap.html}"/>
+
+</head>
+<body>
+<th:block th:include="~{vendor/navbar.html}"/>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Item Information</h5>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+
+                <dt class="col-sm-3">Name:</dt>
+                <dd class="col-sm-9" th:text="${item.name}"></dd>
+
+                <dt class="col-sm-3">Description:</dt>
+                <dd class="col-sm-9" th:text="${item.description}"></dd>
+
+                <dt class="col-sm-3">Price:</dt>
+                <dd class="col-sm-9" th:text="${item.price}"></dd>
+
+            </dl>
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{/items/{id}/edit(id=${item.id})}" class="btn btn-success">Edit</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

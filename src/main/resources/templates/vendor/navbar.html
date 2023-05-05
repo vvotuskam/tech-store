@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">-->
+<!--    <div class="container-fluid">-->
+<!--        <a class="navbar-brand" href="/static">Tech-Store</a>-->
+<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--            <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" aria-current="page" href="/">Home</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'MODERATOR')">-->
+<!--                    <a class="nav-link" aria-current="page" href="/items">Items</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'MODERATOR')">-->
+<!--                    <a class="nav-link" aria-current="page" href="/users">Users</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">-->
+<!--                <a class="dropdown-item" href="#">Profile</a>-->
+<!--                <a class="dropdown-item" href="#">Settings</a>-->
+<!--                <div class="dropdown-divider"></div>-->
+<!--                <a class="dropdown-item" href="#">Logout</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" th:fragment="navbar">
+    <div class="container">
+        <a class="navbar-brand h1 mx-3" href="/items">Tech-Store</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/items">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/basket">Basket</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/register">Register</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'MODERATOR')">
+                    <a class="nav-link" aria-current="page" href="/items">Items</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasAnyRole('ADMIN', 'MODERATOR')">
+                    <a class="nav-link" aria-current="page" href="/users">Users</a>
+                </li>
+                <li class="nav-item mx-3">
+                    <form th:action="@{/logout}" th:method="POST">
+                        <button class="btn btn-danger " type="submit" value="Logout">Logout</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
